@@ -1,10 +1,5 @@
 (function($) {
-
     $( document ).ready(function() {
-
-        var mySettings = Drupal.settings.webform_calendar_date_format;
-        //console.log(mySettings);
-
 
 
         var $webformDatepickerContainer = $('.webform-datepicker');
@@ -19,17 +14,20 @@
             return;
         }
 
+        var $calendarTrigger = $("input[type=image]", $webformDatepickerContainer);
+        if ($calendarTrigger.length == 0) {
+            return;
+        }
+
+
         $('<input class="edit-submitted-date form-control" readonly="readonly" />').insertBefore('.webform-datepicker');
-
-        $("input[type=image]", $webformDatepickerContainer).datepicker("option",{"changeMonth": true,"changeYear":true});
-
-
         $(".edit-submitted-date").click(function(){
             $("input[type=image]", $webformDatepickerContainer).focus();
         });
 
+        $calendarTrigger.datepicker("option",{"changeMonth": true,"changeYear":true});
 
-        $dateSelects.change(function() {
+        $calendarTrigger.datepicker("option", "onClose", function() {
             getFullDate();
         });
 
