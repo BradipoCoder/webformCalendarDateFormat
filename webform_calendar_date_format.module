@@ -1,15 +1,8 @@
 <?php
 
 /**
- * @file
- * Webform per Email module.
- */
-
-// webform_calendar_webform_date_format
-/**
  * Implements preprocess_html().
  */
-
 function webform_calendar_date_format_preprocess_html(&$vars)
 {
     $module_path = drupal_get_path("module", "webform_calendar_date_format");
@@ -30,28 +23,26 @@ function webform_calendar_date_format_menu()
     return $items;
 }
 
+/**
+ *
+ */
 function webform_calendar_date_format_format()
 {
+    $answer = [];
     if (isset($_POST["year"], $_POST["month"], $_POST["day"])) {
       $year = $_POST["year"];
       $month = $_POST["month"];
       $day = $_POST["day"];
 
-      $formatType= 'short';//short or medium or long
+      //@todo: make this an option
+      $formatType= 'long';//short or medium or long
       $formatted = format_date(mktime(0, 0, 0, $month, $day, $year), $formatType);
-      //remove hour:min
+
+      //remove hour:min - @todo: make this an option
       $formatted = preg_replace('/ - .*/', '', $formatted);
 
-      $answer = [
-          'formatted' => $formatted,
-      ];
+      $answer['formatted'] = $formatted;
     }
-    else {
-      //sei sicuro
-        $answer = ["err"];
-        //errore
-    }
-
     drupal_json_output($answer);
     exit;
 }
