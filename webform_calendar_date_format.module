@@ -50,6 +50,7 @@ function webform_calendar_date_format_format()
     else {
       //sei sicuro
         $answer = ["err"];
+        //errore
     }
 
     drupal_json_output($answer);
