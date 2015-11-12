@@ -1,0 +1,5 @@
+name = Formatting Webform Dates
+description = Formatting webform dates in DD/MM/YYYY
+core = 7.x
+package = Webform
+dependencies[] = webform
