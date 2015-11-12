@@ -15,7 +15,6 @@ function webform_calendar_date_format_preprocess_html(&$vars)
     $module_path = drupal_get_path("module", "webform_calendar_date_format");
     drupal_add_js($module_path . "/js/webform_calendar_date_format.js");
     drupal_add_css($module_path . "/css/webform_calendar_date_format.css");
-
 }
 
 /**
