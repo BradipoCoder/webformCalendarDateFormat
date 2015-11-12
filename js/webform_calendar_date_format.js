@@ -21,6 +21,9 @@
 
         $('<input class="edit-submitted-date form-control" readonly="readonly" />').insertBefore('.webform-datepicker');
 
+        $("input[type=image]", $webformDatepickerContainer).datepicker("option",{"changeMonth": true,"changeYear":true});
+
+
         $(".edit-submitted-date").click(function(){
             $("input[type=image]", $webformDatepickerContainer).focus();
         });
