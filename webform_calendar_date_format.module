@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements preprocess_html().
+ * Implements hook_preprocess_html().
  */
 function webform_calendar_date_format_preprocess_html(&$vars)
 {
