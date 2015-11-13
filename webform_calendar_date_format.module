@@ -43,18 +43,17 @@ function webform_calendar_date_format_format()
 {
     $answer = [];
     if (isset($_POST["year"], $_POST["month"], $_POST["day"])) {
-      $year = $_POST["year"];
-      $month = $_POST["month"];
-      $day = $_POST["day"];
+        $year = $_POST["year"];
+        $month = $_POST["month"];
+        $day = $_POST["day"];
+        $format = $_POST["format"];
 
-      //@todo: make this an option
-      $formatType= 'long';//short or medium or long
-      $formatted = format_date(mktime(0, 0, 0, $month, $day, $year), $formatType);
+        //@todo: make this an option
+        $formatType = $format;//short or medium or long
+        $formatted = format_date(mktime(0, 0, 0, $month, $day, $year), $formatType);
+        $formatted = preg_replace('/ - .*/', '', $formatted);
 
-      //remove hour:min - @todo: make this an option
-      $formatted = preg_replace('/ - .*/', '', $formatted);
-
-      $answer['formatted'] = $formatted;
+        $answer['formatted'] = $formatted;
     }
     drupal_json_output($answer);
     exit;

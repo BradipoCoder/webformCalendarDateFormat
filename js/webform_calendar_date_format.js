@@ -32,7 +32,14 @@
 
 
         var getFullDate = function ($self) {
-            var year, month, day = false;
+            var year, month, day= false;
+            var format="short";
+            if($self.parent().hasClass("date_format_medium")){
+                format="medium";
+            }
+            if($self.parent().hasClass("date_format_long")){
+                format="long";
+            }
 
             var $dateSelects = $("select", $self);
             if ($dateSelects.length == 0) {
@@ -57,7 +64,7 @@
                     method: "POST",
                     type: "POST",
                     url: Drupal.settings.basePath + Drupal.settings.pathPrefix + "webform_calendar_date_format/format",
-                    data: {year: year, month: month, day: day}
+                    data: {year: year, month: month, day: day, format:format}
                 }).success(function (data) {
                     if (data['formatted']) {
                         $dateField.val(data['formatted']);
