@@ -24,7 +24,20 @@ function webform_calendar_date_format_menu()
 }
 
 /**
- *
+ * Implements hook_help().
+ */
+function webform_calendar_date_format_help($path, $arg) {
+  $output = '';
+  switch ($path) {
+    case "admin/help#webform_calendar_date_format":
+      $output = "<p>Please read the readme.md file.</p>";
+      break;
+  }
+  return $output;
+}
+
+/**
+ * Format the date
  */
 function webform_calendar_date_format_format()
 {

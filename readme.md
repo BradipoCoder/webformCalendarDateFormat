@@ -13,9 +13,7 @@ To use a specific format on a date component you can set the following classes i
   - `date_format_medium` === Medium
   - `date_format_short` === Short
   
-In addition, because the "Date and time" configuration in (admin/config/regional/settings) does not allow you to select
- a format without time you can set the `date_format_notime` class (in the "Wrapper CSS classes") to remove time
-  information from the formatted date.
+
    
 
 
