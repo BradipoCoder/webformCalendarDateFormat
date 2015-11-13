@@ -1,9 +1,9 @@
 
-.webform-datepicker select{
+.webform-datepicker select {
     display: none;
 }
 
-input[readonly].form-control{
+input[readonly].form-control {
     cursor: default;
     background-color: inherit;
 }

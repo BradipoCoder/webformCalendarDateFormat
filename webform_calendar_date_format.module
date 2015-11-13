@@ -1,15 +1,18 @@
 <?php
-
 /**
- * Implements hook_preprocess_html().
+ * Implements hook_node_load().
  */
-function webform_calendar_date_format_preprocess_html(&$vars)
+function webform_calendar_date_format_node_load($nodes, $types)
 {
-    $module_path = drupal_get_path("module", "webform_calendar_date_format");
-    drupal_add_js($module_path . "/js/webform_calendar_date_format.js");
-    drupal_add_css($module_path . "/css/webform_calendar_date_format.css");
+    foreach ($nodes as $single_node) {
+        if (isset($single_node->webform)) {
+//            dpm($single_node->webform, "node load");
+            $module_path = drupal_get_path("module", "webform_calendar_date_format");
+            drupal_add_js($module_path . "/js/webform_calendar_date_format.js");
+            drupal_add_css($module_path . "/css/webform_calendar_date_format.css");
+        }
+    }
 }
-
 /**
  * Implements hook_menu().
  */
@@ -47,12 +50,9 @@ function webform_calendar_date_format_format()
         $month = $_POST["month"];
         $day = $_POST["day"];
         $format = $_POST["format"];
-
-        //@todo: make this an option
         $formatType = $format;//short or medium or long
         $formatted = format_date(mktime(0, 0, 0, $month, $day, $year), $formatType);
         $formatted = preg_replace('/ - .*/', '', $formatted);
-
         $answer['formatted'] = $formatted;
     }
     drupal_json_output($answer);
