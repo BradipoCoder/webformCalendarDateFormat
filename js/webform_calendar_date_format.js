@@ -1,38 +1,26 @@
 (function ($) {
     $(document).ready(function () {
-
-
         var $webformDatepickerContainer = $('.webform-datepicker');
         var dates = [];
         if ($webformDatepickerContainer.length == 0) {
             return;
         }
-
-
         $.each($webformDatepickerContainer, function () {
             var self = $(this);
-
             var $calendarTrigger = $("input[type=image]", self);
             if ($calendarTrigger.length == 0) {
                 return;
             }
-
             var $newField = $('<input class="edit-submitted-date form-control" readonly="readonly" />');
             self.prepend($newField);
-
             $newField.click(function () {
                 $("input[type=image]", self).datepicker("show");
             });
-
             $calendarTrigger.datepicker("option", {"changeMonth": true, "changeYear": true});
-
             $calendarTrigger.datepicker("option", "onClose", function () {
                 getFullDate(self);
             });
-
         });
-
-
         var getFullDate = function ($self) {
             var year, month, day = false;
             var format = "short";
@@ -42,12 +30,10 @@
             if ($self.parent().hasClass("date_format_long")) {
                 format = "long";
             }
-
             var $dateSelects = $("select", $self);
             if ($dateSelects.length == 0) {
                 return;
             }
-
             $.each($dateSelects, function () {
                 if ($(this).hasClass("year")) {
                     year = $(this).val();
@@ -59,7 +45,6 @@
                     day = $(this).val();
                 }
             });
-
             if (year && month && day) {
                 var $dateField = $(".edit-submitted-date", $self);
                 var temp_date = new Date(month + "/" + day + "/" + year);
@@ -80,9 +65,8 @@
                 });
             }
             if (dates.length > 1) {
-
                 if (dates[0] > dates[1]) {
-                   // console.log("Arrivi il " + dates[0] + " ed partirai il " + dates[1] + " sei sicuro di riuscire a viaggiare nel tempo?");
+                    // console.log("Arrivi il " + dates[0] + " ed partirai il " + dates[1] + " sei sicuro di riuscire a viaggiare nel tempo?");
                     var $newField = $('<p style="color:firebrick;">La data di partenza precede la data di arrivo, sei sicuro di voler viaggiare nel tempo? <p/>');
                     $self.append($newField);
                 }

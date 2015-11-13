@@ -1,12 +1,10 @@
 <?php
-
-
-///**
-// * Implements hook_node_load().
-// */
+/**
+ * Implements hook_node_load().
+ */
 function webform_calendar_date_format_node_load($nodes, $types)
 {
-    foreach($nodes as $single_node) {
+    foreach ($nodes as $single_node) {
         if (isset($single_node->webform)) {
 //            dpm($single_node->webform, "node load");
             $module_path = drupal_get_path("module", "webform_calendar_date_format");
@@ -15,7 +13,6 @@ function webform_calendar_date_format_node_load($nodes, $types)
         }
     }
 }
-
 /**
  * Implements hook_menu().
  */
@@ -28,20 +25,19 @@ function webform_calendar_date_format_menu()
     ];
     return $items;
 }
-
 /**
  * Implements hook_help().
  */
-function webform_calendar_date_format_help($path, $arg) {
-  $output = '';
-  switch ($path) {
-    case "admin/help#webform_calendar_date_format":
-      $output = "<p>Please read the readme.md file.</p>";
-      break;
-  }
-  return $output;
+function webform_calendar_date_format_help($path, $arg)
+{
+    $output = '';
+    switch ($path) {
+        case "admin/help#webform_calendar_date_format":
+            $output = "<p>Please read the readme.md file.</p>";
+            break;
+    }
+    return $output;
 }
-
 /**
  * Format the date
  */
@@ -53,12 +49,9 @@ function webform_calendar_date_format_format()
         $month = $_POST["month"];
         $day = $_POST["day"];
         $format = $_POST["format"];
-
-
         $formatType = $format;//short or medium or long
         $formatted = format_date(mktime(0, 0, 0, $month, $day, $year), $formatType);
         $formatted = preg_replace('/ - .*/', '', $formatted);
-
         $answer['formatted'] = $formatted;
     }
     drupal_json_output($answer);
