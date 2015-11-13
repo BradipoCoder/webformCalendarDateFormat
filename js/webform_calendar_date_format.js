@@ -8,8 +8,7 @@
         }
 
 
-        $.each($webformDatepickerContainer, function (index) {
-
+        $.each($webformDatepickerContainer, function () {
             var self = $(this);
 
             var $calendarTrigger = $("input[type=image]", self);
@@ -17,10 +16,8 @@
                 return;
             }
 
-
             var $newField = $('<input class="edit-submitted-date form-control" readonly="readonly" />');
             self.prepend($newField);
-            //$.insertBefore($('<input class="edit-submitted-date form-control" readonly="readonly" />'),$(this));
 
             $newField.click(function () {
                 $("input[type=image]", self).datepicker("show");
@@ -31,7 +28,6 @@
             $calendarTrigger.datepicker("option", "onClose", function () {
                 getFullDate(self);
             });
-
         });
 
 
@@ -68,7 +64,7 @@
                     } else {
                         $dateField.val(day + "/" + month + "/" + year);
                     }
-                }).error(function (data) {
+                }).error(function () {
                     $dateField.val(day + "/" + month + "/" + year);
                 });
             }
