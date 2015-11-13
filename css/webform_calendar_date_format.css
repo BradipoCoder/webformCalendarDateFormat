@@ -1,7 +1,7 @@
 
-/*.webform-datepicker select{*/
-    /*display: none;*/
-/*}*/
+.webform-datepicker select{
+    display: none;
+}
 
 input[readonly].form-control{
     cursor: default;
