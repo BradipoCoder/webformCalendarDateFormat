@@ -9,9 +9,9 @@ according to the current site language(admin/config/regional/date-time/locale).
 To use a specific format on a date component you can set the following classes in the "Wrapper CSS classes"
  under the Display fieldset:
 
-  - `date_format_long` === Long (default)
+  - `date_format_long` === Long
   - `date_format_medium` === Medium
-  - `date_format_short` === Short
+  - `date_format_short` === Short(default)
   
 
    
