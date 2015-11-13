@@ -6,13 +6,13 @@ function webform_calendar_date_format_node_load($nodes, $types)
 {
     foreach ($nodes as $single_node) {
         if (isset($single_node->webform)) {
-//            dpm($single_node->webform, "node load");
             $module_path = drupal_get_path("module", "webform_calendar_date_format");
             drupal_add_js($module_path . "/js/webform_calendar_date_format.js");
             drupal_add_css($module_path . "/css/webform_calendar_date_format.css");
         }
     }
 }
+
 /**
  * Implements hook_menu().
  */

@@ -46,8 +46,6 @@
             });
             if (year && month && day) {
                 var $dateField = $(".edit-submitted-date", $self);
-                var temp_date = new Date(month + "/" + day + "/" + year);
-                dates.push(temp_date);
                 $.ajax({
                     method: "POST",
                     type: "POST",
@@ -64,6 +62,5 @@
                 });
             }
         };
-        //@TODO: leaving date always after arrival date?
     });
 })(jQuery);
