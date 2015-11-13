@@ -1,7 +1,6 @@
 (function ($) {
     $(document).ready(function () {
         var $webformDatepickerContainer = $('.webform-datepicker');
-        var dates = [];
         if ($webformDatepickerContainer.length == 0) {
             return;
         }
@@ -63,13 +62,6 @@
                 }).error(function () {
                     $dateField.val(day + "/" + month + "/" + year);
                 });
-            }
-            if (dates.length > 1) {
-                if (dates[0] > dates[1]) {
-                    // console.log("Arrivi il " + dates[0] + " ed partirai il " + dates[1] + " sei sicuro di riuscire a viaggiare nel tempo?");
-                    var $newField = $('<p style="color:firebrick;">La data di partenza precede la data di arrivo, sei sicuro di voler viaggiare nel tempo? <p/>');
-                    $self.append($newField);
-                }
             }
         };
         //@TODO: leaving date always after arrival date?
