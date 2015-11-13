@@ -54,7 +54,7 @@ function webform_calendar_date_format_format()
         $day = $_POST["day"];
         $format = $_POST["format"];
 
-        //@todo: make this an option
+
         $formatType = $format;//short or medium or long
         $formatted = format_date(mktime(0, 0, 0, $month, $day, $year), $formatType);
         $formatted = preg_replace('/ - .*/', '', $formatted);
